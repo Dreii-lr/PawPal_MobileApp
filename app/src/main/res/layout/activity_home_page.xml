@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_home_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F4F6">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/header_title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/gradient_background"
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:layout_marginTop="90dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_sans_extrabold"
+                    android:text="Hello, Buddy!"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="6dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
+                        android:text="Next meal scheduled for"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="2dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans_extrabold"
+                        android:text="5:30PM"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="185dp"
+                    android:layout_height="230dp"
+                    android:layout_margin="8dp"
+                    app:strokeColor="@color/white"
+                    app:cardElevation="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@color/white">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FOOD LEVEL"
+                            android:textSize="12sp"
+                            android:letterSpacing="0.05"
+                            android:fontFamily="@font/nunito_sans_extrabold"
+                            android:textColor="#90A4AE"
+                            android:layout_marginBottom="50dp"/>
+
+                        <ProgressBar
+                            android:id="@+id/progressBarFood"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="110dp"
+                            android:layout_height="40dp"
+                            android:progressDrawable="@drawable/custom_progress_food"
+                            android:progress="75"
+                            android:max="100"
+                            android:rotation="-90"/>
+
+                        <TextView
+                            android:id="@+id/textPercentageFood"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="75%"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/nunito_sans_extrabold"
+                            android:textColor="#FF9F43"
+                            android:layout_marginTop="50dp"/>
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="185dp"
+                    android:layout_height="230dp"
+                    android:layout_margin="8dp"
+                    app:strokeColor="@color/white"
+                    app:cardElevation="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@color/white">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="WATER LEVEL"
+                            android:textSize="12sp"
+                            android:letterSpacing="0.05"
+                            android:fontFamily="@font/nunito_sans_extrabold"
+                            android:textColor="#90A4AE"
+                            android:layout_marginBottom="50dp"/>
+
+                        <ProgressBar
+                            android:id="@+id/progressBarWater"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="110dp"
+                            android:layout_height="40dp"
+                            android:progressDrawable="@drawable/custom_progress_water"
+                            android:progress="40"
+                            android:max="100"
+                            android:rotation="-90"/>
+
+                        <TextView
+                            android:id="@+id/textPercentageWater"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="40%"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/nunito_sans_extrabold"
+                            android:textColor="#03A9F4"
+                            android:layout_marginTop="50dp"/>
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:strokeColor="#ECEFF1"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:id="@+id/titlePendingScedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#ECEFF1"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="Pending Schedule"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/nunito_sans_extrabold"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewAlarms"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="2dp" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/bottom_nav_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/fragment_bottom_top_navigator" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

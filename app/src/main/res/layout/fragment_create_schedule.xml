@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet"
+    android:padding="16dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            android:gravity="center"
+            android:text="Add schedule"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvScheduleDiff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            android:gravity="center"
+            android:text="Schedule in 0 hours 0 minutes"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            android:letterSpacing="0.05"
+            android:text="PICK TIME"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/white"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Light"
+            android:timePickerMode="spinner" />
+
+        <TextView
+            android:id="@+id/tvDispenseType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            android:letterSpacing="0.05"
+            android:text="DISPENSE TYPE"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+
+        <RadioGroup
+            android:id="@+id/rgDispenseType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp"
+            android:checkedButton="@id/rbFood">
+
+            <RadioButton
+                android:id="@+id/rbFood"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Food"
+                android:textColor="@color/dispense_type_text_color"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/nunito_sans_extrabold"
+                android:button="@null"
+                android:gravity="center"
+                android:background="@drawable/selector_dispense_type_food"
+                android:drawableStart="@drawable/ic_food"
+                android:drawablePadding="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+
+            <RadioButton
+                android:id="@+id/rbWater"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Water"
+                android:textColor="@color/dispense_type_text_color"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/nunito_sans_extrabold"
+                android:button="@null"
+                android:gravity="center"
+                android:background="@drawable/selector_dispense_type_water"
+                android:drawableStart="@drawable/ic_water"
+                android:drawablePadding="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:backgroundTint="#5B50D6"
+                android:fontFamily="@font/nunito_sans_extrabold"
+                android:text="Save Schedule"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:cornerRadius="10dp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

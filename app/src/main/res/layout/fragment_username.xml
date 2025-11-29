@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F3F4F6"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Logo -->
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_logo" />
+
+        <!-- App Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="PawPal"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:fontFamily="@font/nunito_sans_extrabold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Smart Care for Best Friends"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_sans_extrabold"/>
+
+        <!-- Progress Indicator -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="115dp"
+                android:layout_height="7dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/progress_complete" />
+
+            <View
+                android:layout_width="115dp"
+                android:layout_height="7dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/progress_active" />
+
+            <View
+                android:layout_width="115dp"
+                android:layout_height="7dp"
+                android:background="@drawable/progress_inactive" />
+        </LinearLayout>
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="What should we call you?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/nunito_sans_extrabold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create a username for your profile."
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_sans_extrabold"/>
+
+        <!-- Username Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="USERNAME"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Send Code Button -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:hint="Username"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#5B50D6"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            app:cornerRadius="10dp"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#E5E7EB" />
+
+        <!-- Back to Sign In -->
+        <TextView
+            android:id="@+id/backToSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Back to Sign In"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_bold"/>
+
+    </LinearLayout>
+</RelativeLayout>
