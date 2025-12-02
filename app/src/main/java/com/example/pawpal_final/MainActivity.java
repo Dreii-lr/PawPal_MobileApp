@@ -1,40 +1,60 @@
 package com.example.pawpal_final;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.pawpal_final.ui.SigninActivity;
+import com.google.android.material.button.MaterialButton;
+
 public class MainActivity extends AppCompatActivity {
+
+    private MaterialButton btnSignIn;
+    private MaterialButton btnCreateAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        setContentView(R.layout.activity_home_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.activity_home_page), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        NavigationManager.setup(this, R.id.imgHome);
+        initializeViews();
+        setupClickListeners();
     }
 
-/*        // Load the first fragment
-        if (savedInstanceState == null) {
-            loadFragment(new EmailVerificationFragment());
-        }
-    }*/
+    private void initializeViews() {
+        btnSignIn = findViewById(R.id.btnSignIn);
+        btnCreateAccount = findViewById(R.id.btnCreateAccount);
+    }
 
-    public void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    private void setupClickListeners() {
+        btnSignIn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SigninActivity.class);
+            startActivity(intent);
+        });
+
+        btnCreateAccount.setOnClickListener(v -> {
+            loadFragment(new EmailVerificationFragment());
+        });
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

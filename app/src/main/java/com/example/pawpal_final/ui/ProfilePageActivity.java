@@ -15,6 +15,8 @@ import com.google.android.material.card.MaterialCardView;
 
 public class ProfilePageActivity extends AppCompatActivity {
 
+    private LinearLayout btnSecuritySettings, btnUserInformation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,19 @@ public class ProfilePageActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        btnUserInformation = findViewById(R.id.btnUserInformation);
+        btnSecuritySettings = findViewById(R.id.btnSecuritySettings);
+
+        btnUserInformation.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfilePageActivity.this, UserInformationActivity.class);
+            startActivity(intent);
+        });
+
+        btnSecuritySettings.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfilePageActivity.this, SecuritySettingsActivity.class);
+            startActivity(intent);
         });
 
         NavigationManager.setup(this, R.id.imgUser);

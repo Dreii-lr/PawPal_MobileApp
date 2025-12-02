@@ -1,10 +1,19 @@
 package com.example.pawpal_final.ui;
 
+import android.os.Bundle;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import com.example.pawpal_final.NavigationManager;
+import com.example.pawpal_final.R;
 
 public class HomepageActivity extends AppCompatActivity {
 
-/*    @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -15,6 +24,7 @@ public class HomepageActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         NavigationManager.setup(this, R.id.imgHome);
-    }*/
+    }
 }

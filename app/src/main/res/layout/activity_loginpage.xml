@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_loginpage"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F3F4F6"
     android:gravity="center">
@@ -139,6 +140,7 @@
             android:fontFamily="@font/nunito_bold"/>
 
         <TextView
+            android:id="@+id/createAccountText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

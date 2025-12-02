@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F3F4F6"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="PawPal"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:fontFamily="@font/nunito_sans_extrabold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Smart Care for Best Friends"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_sans_extrabold"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:text="Sign In"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#5B50D6"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            app:cornerRadius="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCreateAccount"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:text="Create Account"
+            android:textAllCaps="false"
+            android:textColor="#5B50D6"
+            android:backgroundTint="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito_sans_extrabold"
+            app:strokeColor="@color/gray"
+            app:strokeWidth="0.5dp"
+            app:cornerRadius="10dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

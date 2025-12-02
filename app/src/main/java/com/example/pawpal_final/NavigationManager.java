@@ -31,7 +31,7 @@ public class NavigationManager {
         animateButton(imgUser, activeId == R.id.imgUser);
 
         // Set navigation clicks
-        setClickListener(context, imgHome, MainActivity.class);
+        setClickListener(context, imgHome, HomepageActivity.class);
         setClickListener(context, imgScheduling, SchedulePageActivity.class);
 
 
