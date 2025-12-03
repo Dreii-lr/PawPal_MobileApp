@@ -9,32 +9,29 @@ import android.widget.ImageView;
 import com.example.pawpal_final.ui.HomepageActivity;
 import com.example.pawpal_final.ui.ProfilePageActivity;
 import com.example.pawpal_final.ui.SchedulePageActivity;
-
+import com.example.pawpal_final.ui.HistoryLogActivity;
 public class NavigationManager {
 
-    public static ImageView imgHome, imgScheduling, imgUser;
+    public static ImageView imgHome, imgScheduling, imgUser, imgHistoryLogs;
 
     public static void setup (final Context context, int activeId) {
         Activity activity = (Activity) context;
 
         imgHome = activity.findViewById(R.id.imgHome);
         imgScheduling = activity.findViewById(R.id.imgScheduling);
-
-
+        imgHistoryLogs = activity.findViewById(R.id.imgHistoryLogs);
         imgUser = activity.findViewById(R.id.imgUser);
 
         // Animate active/inactive icons
         animateButton(imgHome, activeId == R.id.imgHome);
         animateButton(imgScheduling, activeId == R.id.imgScheduling);
-
-
+        animateButton(imgHistoryLogs, activeId == R.id.imgHistoryLogs);
         animateButton(imgUser, activeId == R.id.imgUser);
 
         // Set navigation clicks
         setClickListener(context, imgHome, HomepageActivity.class);
         setClickListener(context, imgScheduling, SchedulePageActivity.class);
-
-
+        setClickListener(context, imgHistoryLogs, HistoryLogActivity.class);
         setClickListener(context, imgUser, ProfilePageActivity.class);
     }
 

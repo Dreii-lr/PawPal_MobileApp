@@ -13,16 +13,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
-        app:cardBackgroundColor="@android:color/white">
+        app:cardElevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="0dp"
-            android:paddingEnd="16dp"
             android:paddingTop="0dp"
+            android:paddingEnd="16dp"
             android:paddingBottom="0dp">
 
             <View
@@ -30,9 +30,9 @@
                 android:layout_width="4dp"
                 android:layout_height="0dp"
                 android:background="#5B50D6"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/iconImage"
@@ -42,18 +42,18 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/leftStrip"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:fontFamily="@font/nunito_sans_extrabold"
                 android:text="08:00 AM"
                 android:textColor="@color/black"
-                android:fontFamily="@font/nunito_sans_extrabold"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@id/iconImage"
                 app:layout_constraintTop_toTopOf="@id/iconImage" />
@@ -62,9 +62,9 @@
                 android:id="@+id/tvDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_sans_extrabold"
                 android:text="Food"
                 android:textColor="#666666"
-                android:fontFamily="@font/nunito_sans_extrabold"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/tvTime"
                 app:layout_constraintTop_toBottomOf="@id/tvTime" />
@@ -74,11 +74,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                app:thumbTint="@color/white"
-                app:trackTint="#5B50D6"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@color/white"
+                app:trackTint="#5B50D6" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

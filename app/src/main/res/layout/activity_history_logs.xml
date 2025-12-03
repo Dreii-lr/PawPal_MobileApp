@@ -1,6 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_history_logs"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F6FA">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Header Spacer (Placeholder) -->
+    <View
+        android:id="@+id/header_spacer"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"/>
+
+    <!-- History Log Title -->
+    <TextView
+        android:id="@+id/history_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History Log"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_below="@id/header_spacer"/>
+
+    <!-- Clear Button -->
+    <TextView
+        android:id="@+id/clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:textSize="16sp"
+        android:textColor="#F48FB1"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackground"
+        android:layout_marginEnd="16dp"
+        android:layout_alignTop="@id/history_title"
+        android:layout_alignBottom="@id/history_title"
+        android:layout_alignParentEnd="true"/>
+
+    <!-- Scrollable List of Log Entries -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/log_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Status Footer -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Showing last 24 hours of activity"
+                android:textSize="14sp"
+                android:textColor="#52206a"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+    </ScrollView>
+    <!-- Bottom Nav Container -->
+    <RelativeLayout
+        android:id="@+id/bottom_nav_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/fragment_bottom_top_navigator" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

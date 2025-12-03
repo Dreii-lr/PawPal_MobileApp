@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pawpal_final.CreateScheduleBottomSheet;
+import com.example.pawpal_final.HistoryLogsManager;
 import com.example.pawpal_final.NavigationManager;
 import com.example.pawpal_final.R;
 import com.example.pawpal_final.ScheduleAdapter;
@@ -19,6 +20,9 @@ import com.example.pawpal_final.model.Schedule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class SchedulePageActivity extends AppCompatActivity {
 
@@ -83,6 +87,15 @@ public class SchedulePageActivity extends AppCompatActivity {
             scheduleAdapter.addSchedule(newSchedule);
             Toast.makeText(this, "Schedule added: " + time + " - " + type,
                     Toast.LENGTH_SHORT).show();
+            // Convert scheduled time (String) to Date
+            try {
+                Date scheduledDate = new SimpleDateFormat("hh:mm a", Locale.getDefault()).parse(time);
+                HistoryLogsManager.getInstance().addLog(type + " Dispense", "Success", type, scheduledDate);
+            } catch (Exception e) {
+                e.printStackTrace();
+                // fallback if parsing fails
+                HistoryLogsManager.getInstance().addLog(type + " Dispense", "Success", type);
+            }
         });
         bottomSheet.show(getSupportFragmentManager(), "CreateScheduleBottomSheet");
     }
