@@ -13,30 +13,30 @@
         android:theme="@style/Theme.PawPal_FInal" >
 
         <activity
-            android:name=".ui.SigninActivity"
+            android:name=".ui.login.SigninActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.UserInformationActivity"
+            android:name=".ui.activities.UserInformationActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.SecuritySettingsActivity"
+            android:name=".ui.activities.SecuritySettingsActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.ProfilePageActivity"
+            android:name=".ui.homepage.ProfilePageActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.SchedulePageActivity"
+            android:name=".ui.homepage.SchedulePageActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.HomepageActivity"
+            android:name=".ui.homepage.HomepageActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.HistoryLogActivity"
+            android:name=".ui.homepage.HistoryLogActivity"
             android:exported="true"/>
 
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

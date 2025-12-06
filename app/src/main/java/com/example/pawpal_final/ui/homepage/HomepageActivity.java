@@ -1,4 +1,4 @@
-package com.example.pawpal_final.ui;
+package com.example.pawpal_final.ui.homepage;
 
 import android.os.Bundle;
 

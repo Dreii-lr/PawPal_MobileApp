@@ -1,4 +1,4 @@
-package com.example.pawpal_final.ui;
+package com.example.pawpal_final.ui.homepage;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -11,11 +11,11 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pawpal_final.CreateScheduleBottomSheet;
+import com.example.pawpal_final.ui.items.CreateScheduleBottomSheet;
 import com.example.pawpal_final.HistoryLogsManager;
 import com.example.pawpal_final.NavigationManager;
 import com.example.pawpal_final.R;
-import com.example.pawpal_final.ScheduleAdapter;
+import com.example.pawpal_final.ui.items.ScheduleAdapter;
 import com.example.pawpal_final.data.model.Schedule;
 import com.google.android.material.button.MaterialButton;
 

@@ -1,4 +1,4 @@
-package com.example.pawpal_final;
+package com.example.pawpal_final.ui.registration;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.pawpal_final.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 

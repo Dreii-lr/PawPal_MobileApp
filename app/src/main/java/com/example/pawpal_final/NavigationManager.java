@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.widget.ImageView;
 
-import com.example.pawpal_final.ui.HomepageActivity;
-import com.example.pawpal_final.ui.ProfilePageActivity;
-import com.example.pawpal_final.ui.SchedulePageActivity;
-import com.example.pawpal_final.ui.HistoryLogActivity;
+import com.example.pawpal_final.ui.homepage.HomepageActivity;
+import com.example.pawpal_final.ui.homepage.ProfilePageActivity;
+import com.example.pawpal_final.ui.homepage.SchedulePageActivity;
+import com.example.pawpal_final.ui.homepage.HistoryLogActivity;
 public class NavigationManager {
 
     public static ImageView imgHome, imgScheduling, imgUser, imgHistoryLogs;

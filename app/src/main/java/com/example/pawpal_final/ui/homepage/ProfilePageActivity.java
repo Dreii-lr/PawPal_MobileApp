@@ -1,4 +1,4 @@
-package com.example.pawpal_final.ui;
+package com.example.pawpal_final.ui.homepage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.pawpal_final.NavigationManager;
 import com.example.pawpal_final.R;
-import com.google.android.material.card.MaterialCardView;
+import com.example.pawpal_final.ui.activities.SecuritySettingsActivity;
+import com.example.pawpal_final.ui.activities.UserInformationActivity;
 
 public class ProfilePageActivity extends AppCompatActivity {
 

@@ -1,10 +1,7 @@
-package com.example.pawpal_final.ui;
+package com.example.pawpal_final.ui.homepage;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,14 +11,12 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pawpal_final.HistoryAdapter;
+import com.example.pawpal_final.ui.items.HistoryAdapter;
 import com.example.pawpal_final.NavigationManager;
 import com.example.pawpal_final.R;
 import com.example.pawpal_final.HistoryLogsManager;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 public class HistoryLogActivity extends AppCompatActivity {
 

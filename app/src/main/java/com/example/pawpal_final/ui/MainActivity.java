@@ -1,14 +1,16 @@
-package com.example.pawpal_final;
+package com.example.pawpal_final.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.pawpal_final.ui.SigninActivity;
+import com.example.pawpal_final.ui.registration.EmailVerificationFragment;
+import com.example.pawpal_final.R;
+import com.example.pawpal_final.ui.login.SigninActivity;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {

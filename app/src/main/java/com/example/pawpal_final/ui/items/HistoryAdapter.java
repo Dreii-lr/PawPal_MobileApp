@@ -1,4 +1,4 @@
-package com.example.pawpal_final;
+package com.example.pawpal_final.ui.items;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pawpal_final.HistoryLogsManager;
+import com.example.pawpal_final.R;
 import com.google.android.material.card.MaterialCardView;
 
 import java.text.SimpleDateFormat;

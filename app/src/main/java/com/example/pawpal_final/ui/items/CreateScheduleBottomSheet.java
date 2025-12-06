@@ -1,4 +1,4 @@
-package com.example.pawpal_final;
+package com.example.pawpal_final.ui.items;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.pawpal_final.R;
 import com.example.pawpal_final.data.model.Schedule; // Make sure to import your model
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;

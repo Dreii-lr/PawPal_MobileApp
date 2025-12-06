@@ -1,4 +1,4 @@
-package com.example.pawpal_final;
+package com.example.pawpal_final.ui.items;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pawpal_final.R;
 import com.example.pawpal_final.data.model.Schedule;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import java.util.List;

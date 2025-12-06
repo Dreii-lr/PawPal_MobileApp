@@ -1,8 +1,5 @@
-package com.example.pawpal_final;
+package com.example.pawpal_final.ui.registration;
 
-import static android.content.Intent.getIntent;
-
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,7 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.pawpal_final.ui.SigninActivity;
+import com.example.pawpal_final.R;
+import com.example.pawpal_final.ui.login.SigninActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 

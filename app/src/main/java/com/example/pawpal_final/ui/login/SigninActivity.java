@@ -1,4 +1,4 @@
-package com.example.pawpal_final.ui;
+package com.example.pawpal_final.ui.login;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,9 +17,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.pawpal_final.EmailVerificationFragment;
-import com.example.pawpal_final.MainActivity;
+import com.example.pawpal_final.ui.MainActivity;
 import com.example.pawpal_final.R;
+import com.example.pawpal_final.ui.homepage.HomepageActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
