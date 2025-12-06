@@ -13,7 +13,6 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Logo -->
         <ImageView
             android:layout_width="75dp"
             android:layout_height="75dp"
@@ -21,7 +20,6 @@
             android:layout_marginTop="30dp"
             android:src="@drawable/ic_logo" />
 
-        <!-- App Name -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +39,6 @@
             android:textSize="16sp"
             android:fontFamily="@font/nunito_sans_extrabold"/>
 
-        <!-- Email Input -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +50,6 @@
             android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
 
-        <!-- Send Code Button -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nunito_bold"
-                android:hint="hello@example.com"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:padding="15dp"
                 android:textColor="@color/black"
@@ -91,35 +87,88 @@
             android:layout_marginBottom="8dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tgPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
             app:boxStrokeColor="@color/gray"
+            app:endIconMode="password_toggle"
             app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/passwordInput"
+                android:id="@+id/newPasswordInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_bold"
-                android:hint="hello@example.com"
-                android:inputType="textEmailAddress"
+                android:fontFamily="@font/nunito_sans_extrabold"
+                android:hint="Password"
+                android:inputType="textPassword"
                 android:padding="15dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />
+
+                <LinearLayout
+                    android:id="@+id/passwordRulesContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:layout_marginBottom="16dp"
+                    android:paddingStart="4dp">
+
+                    <TextView
+                        android:id="@+id/ruleLength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• At least 8 characters"
+                        android:textColor="#EF4444"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito_bold"/>
+
+                    <TextView
+                        android:id="@+id/ruleCase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Mix of Uppercase &amp; Lowercase"
+                        android:textColor="#EF4444"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:layout_marginTop="4dp"/>
+
+                    <TextView
+                        android:id="@+id/ruleSymbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Contains a symbol (!, @, #, etc.)"
+                        android:textColor="#EF4444"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:layout_marginTop="4dp"/>
+
+                    <TextView
+                        android:id="@+id/ruleNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Contains a number"
+                        android:textColor="#EF4444"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
         </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:text="Sign In"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
@@ -128,7 +177,6 @@
             android:fontFamily="@font/nunito_sans_extrabold"
             app:cornerRadius="10dp"/>
 
-        <!-- Back to Sign In -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

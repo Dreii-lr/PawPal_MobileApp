@@ -12,17 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pawpal_final.CreateScheduleBottomSheet;
-import com.example.pawpal_final.HistoryLogsManager;
 import com.example.pawpal_final.NavigationManager;
 import com.example.pawpal_final.R;
 import com.example.pawpal_final.ScheduleAdapter;
-import com.example.pawpal_final.model.Schedule;
+import com.example.pawpal_final.data.model.Schedule;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class SchedulePageActivity extends AppCompatActivity {
 
@@ -59,14 +55,20 @@ public class SchedulePageActivity extends AppCompatActivity {
         scheduleAdapter = new ScheduleAdapter(scheduleList, new ScheduleAdapter.OnScheduleClickListener() {
             @Override
             public void onScheduleToggle(int position, boolean isEnabled) {
+                // Keep toggle logic
                 String status = isEnabled ? "enabled" : "disabled";
-                Toast.makeText(SchedulePageActivity.this,
-                        "Schedule " + status, Toast.LENGTH_SHORT).show();
+                // Optional: Update data model state here if needed
             }
 
             @Override
             public void onScheduleDelete(int position) {
                 showDeleteConfirmation(position);
+            }
+
+            @Override
+            public void onScheduleClick(int position, Schedule schedule) {
+                // Open BottomSheet in Edit Mode
+                showCreateScheduleBottomSheet(schedule, position);
             }
         });
 
@@ -76,27 +78,42 @@ public class SchedulePageActivity extends AppCompatActivity {
 
     private void setupListeners() {
         btnAdd.setOnClickListener(v -> {
-            showCreateScheduleBottomSheet();
+            // Open BottomSheet in Create Mode (null schedule, -1 position)
+            showCreateScheduleBottomSheet(null, -1);
         });
     }
 
-    private void showCreateScheduleBottomSheet() {
+    /**
+     * Shows the bottom sheet.
+     * @param scheduleToEdit Pass null if creating new.
+     * @param position Pass -1 if creating new.
+     */
+    private void showCreateScheduleBottomSheet(Schedule scheduleToEdit, int position) {
         CreateScheduleBottomSheet bottomSheet = new CreateScheduleBottomSheet();
-        bottomSheet.setOnScheduleCreatedListener((time, type) -> {
-            Schedule newSchedule = new Schedule(time, type, true);
-            scheduleAdapter.addSchedule(newSchedule);
-            Toast.makeText(this, "Schedule added: " + time + " - " + type,
-                    Toast.LENGTH_SHORT).show();
-            // Convert scheduled time (String) to Date
-            try {
-                Date scheduledDate = new SimpleDateFormat("hh:mm a", Locale.getDefault()).parse(time);
-                HistoryLogsManager.getInstance().addLog(type + " Dispense", "Success", type, scheduledDate);
-            } catch (Exception e) {
-                e.printStackTrace();
-                // fallback if parsing fails
-                HistoryLogsManager.getInstance().addLog(type + " Dispense", "Success", type);
+
+        // If editing, pass the data
+        if (scheduleToEdit != null) {
+            bottomSheet.setScheduleData(scheduleToEdit, position);
+        }
+
+        bottomSheet.setOnScheduleActionListener((time, type, pos) -> {
+            if (pos == -1) {
+                // Add New
+                Schedule newSchedule = new Schedule(time, type, true);
+                scheduleAdapter.addSchedule(newSchedule);
+                Toast.makeText(this, "Schedule added", Toast.LENGTH_SHORT).show();
+            } else {
+                // Update Existing
+                // Assuming Schedule constructor: Schedule(String time, String type, boolean isEnabled)
+                // We keep the existing 'enabled' state
+                boolean currentEnabledState = scheduleList.get(pos).isEnabled();
+                Schedule updatedSchedule = new Schedule(time, type, currentEnabledState);
+
+                scheduleAdapter.updateSchedule(pos, updatedSchedule);
+                Toast.makeText(this, "Schedule updated", Toast.LENGTH_SHORT).show();
             }
         });
+
         bottomSheet.show(getSupportFragmentManager(), "CreateScheduleBottomSheet");
     }
 

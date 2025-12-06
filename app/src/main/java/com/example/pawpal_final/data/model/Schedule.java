@@ -1,4 +1,4 @@
-package com.example.pawpal_final.model;
+package com.example.pawpal_final.data.model;
 
 public class Schedule {
     private String time;

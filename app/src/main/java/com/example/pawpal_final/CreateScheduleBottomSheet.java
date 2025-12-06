@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import com.example.pawpal_final.data.model.Schedule; // Make sure to import your model
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 import java.util.Locale;
@@ -21,14 +22,29 @@ public class CreateScheduleBottomSheet extends BottomSheetDialogFragment {
     private RadioButton rbFood, rbWater;
     private TextView tvScheduleDiff;
     private MaterialButton btnSave;
-    private OnScheduleCreatedListener listener;
+    private OnScheduleActionListener listener;
 
-    public interface OnScheduleCreatedListener {
-        void onScheduleCreated(String time, String type);
+    // Variables for Edit Mode
+    private boolean isEditMode = false;
+    private int editPosition = -1;
+    private String existingTime;
+    private String existingType;
+
+    // Updated Interface to include position
+    public interface OnScheduleActionListener {
+        void onScheduleAction(String time, String type, int position);
     }
 
-    public void setOnScheduleCreatedListener(OnScheduleCreatedListener listener) {
+    public void setOnScheduleActionListener(OnScheduleActionListener listener) {
         this.listener = listener;
+    }
+
+    // New method to set data for editing
+    public void setScheduleData(Schedule schedule, int position) {
+        this.isEditMode = true;
+        this.editPosition = position;
+        this.existingTime = schedule.getTime();
+        this.existingType = schedule.getType();
     }
 
     @Nullable
@@ -40,8 +56,13 @@ public class CreateScheduleBottomSheet extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         initViews(view);
+
+        // Populate views if in Edit Mode
+        if (isEditMode) {
+            populateExistingData();
+        }
+
         setupListeners();
     }
 
@@ -51,29 +72,60 @@ public class CreateScheduleBottomSheet extends BottomSheetDialogFragment {
         rbFood = view.findViewById(R.id.rbFood);
         rbWater = view.findViewById(R.id.rbWater);
         tvScheduleDiff = view.findViewById(R.id.tvScheduleDiff);
-        btnSave = view.findViewById(R.id.btnCancel);
+        btnSave = view.findViewById(R.id.btnCancel); // ID was btnCancel in XML
 
-        // Set 24-hour format
+        // Set 24-hour format logic for the picker widget
         timePicker.setIs24HourView(false);
+
+        if(isEditMode) {
+            btnSave.setText("Update Schedule");
+            ((TextView)view.findViewById(R.id.tvScheduleDiff)).setText("Edit Schedule"); // Optionally change title
+        }
+    }
+
+    private void populateExistingData() {
+        // 1. Set Radio Button
+        if ("Water".equalsIgnoreCase(existingType)) {
+            rbWater.setChecked(true);
+        } else {
+            rbFood.setChecked(true);
+        }
+
+        // 2. Parse Time String (e.g., "08:30 PM") back to integers
+        // Note: This assumes strict format "hh:mm aa"
+        try {
+            String[] parts = existingTime.split(" "); // ["08:30", "PM"]
+            String[] timeParts = parts[0].split(":"); // ["08", "30"]
+
+            int hour = Integer.parseInt(timeParts[0]);
+            int minute = Integer.parseInt(timeParts[1]);
+            String amPm = parts[1];
+
+            // Convert 12h to 24h for the TimePicker setters
+            if (amPm.equalsIgnoreCase("PM") && hour != 12) {
+                hour += 12;
+            } else if (amPm.equalsIgnoreCase("AM") && hour == 12) {
+                hour = 0;
+            }
+
+            timePicker.setHour(hour);
+            timePicker.setMinute(minute);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void setupListeners() {
-        // Update schedule difference when time changes
         timePicker.setOnTimeChangedListener((view, hourOfDay, minute) -> {
             updateScheduleDifference(hourOfDay, minute);
         });
 
-        // Save button click
-        btnSave.setOnClickListener(v -> {
-            saveSchedule();
-        });
+        btnSave.setOnClickListener(v -> saveSchedule());
 
-        // Initial schedule difference update
         updateScheduleDifference(timePicker.getHour(), timePicker.getMinute());
     }
 
     private void updateScheduleDifference(int hour, int minute) {
-        // Calculate time difference from now
         java.util.Calendar now = java.util.Calendar.getInstance();
         java.util.Calendar selected = java.util.Calendar.getInstance();
         selected.set(java.util.Calendar.HOUR_OF_DAY, hour);
@@ -95,7 +147,6 @@ public class CreateScheduleBottomSheet extends BottomSheetDialogFragment {
         int hour = timePicker.getHour();
         int minute = timePicker.getMinute();
 
-        // Format time to 12-hour format with AM/PM
         String amPm = hour >= 12 ? "PM" : "AM";
         int displayHour = hour % 12;
         if (displayHour == 0) displayHour = 12;
@@ -106,7 +157,9 @@ public class CreateScheduleBottomSheet extends BottomSheetDialogFragment {
         String type = rbFood.isChecked() ? "Food" : "Water";
 
         if (listener != null) {
-            listener.onScheduleCreated(time, type);
+            // Pass editPosition. If it's -1, activity knows it's new.
+            // If it's > -1, activity knows it's an update.
+            listener.onScheduleAction(time, type, editPosition);
         }
 
         dismiss();

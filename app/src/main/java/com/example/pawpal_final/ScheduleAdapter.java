@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pawpal_final.model.Schedule;
+import com.example.pawpal_final.data.model.Schedule;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import java.util.List;
 
@@ -20,6 +20,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     public interface OnScheduleClickListener {
         void onScheduleToggle(int position, boolean isEnabled);
         void onScheduleDelete(int position);
+        void onScheduleClick(int position, Schedule schedule); // Added this
     }
 
     public ScheduleAdapter(List<Schedule> scheduleList, OnScheduleClickListener listener) {
@@ -51,9 +52,17 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         notifyItemInserted(scheduleList.size() - 1);
     }
 
+    // Added method to update existing item
+    public void updateSchedule(int position, Schedule schedule) {
+        scheduleList.set(position, schedule);
+        notifyItemChanged(position);
+    }
+
     public void removeSchedule(int position) {
         scheduleList.remove(position);
         notifyItemRemoved(position);
+        // Notify range changed to update positions of subsequent items
+        notifyItemRangeChanged(position, scheduleList.size());
     }
 
     class ScheduleViewHolder extends RecyclerView.ViewHolder {
@@ -75,14 +84,12 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             tvDesc.setText(schedule.getDescription());
             switchToggle.setChecked(schedule.isEnabled());
 
-            // Set icon based on type
             if (schedule.getType().equals("Food")) {
                 iconImage.setImageResource(R.drawable.selector_food_selected);
             } else {
                 iconImage.setImageResource(R.drawable.selector_water_selected);
             }
 
-            // Handle switch toggle
             switchToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 schedule.setEnabled(isChecked);
                 if (listener != null) {
@@ -90,12 +97,18 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
                 }
             });
 
-            // Handle long click to delete
             itemView.setOnLongClickListener(v -> {
                 if (listener != null) {
                     listener.onScheduleDelete(position);
                 }
                 return true;
+            });
+
+            // Added regular click listener for editing
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onScheduleClick(position, schedule);
+                }
             });
         }
     }
