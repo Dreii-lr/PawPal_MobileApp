@@ -11,18 +11,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pawpal_final.HistoryAdapter;
 import com.example.pawpal_final.NavigationManager;
 import com.example.pawpal_final.R;
 import com.example.pawpal_final.HistoryLogsManager;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 
 public class HistoryLogActivity extends AppCompatActivity {
 
-    private LinearLayout logContainer;
-    private TextView clearButton;
+    private RecyclerView recyclerViewLogs;
+    private HistoryAdapter adapter;
+    private List<HistoryLogsManager.LogItem> logList;
+    private View clearButton; // Changed to View to match MaterialCardView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +41,28 @@ public class HistoryLogActivity extends AppCompatActivity {
             return insets;
         });
 
-        logContainer = findViewById(R.id.log_container);
-        clearButton = findViewById(R.id.clear_button);
+        // 1. Initialize Views
+        // Note: Use the ID from your XML. You had it as "recyclerViewAlarms" in the XML,
+        // but it's cleaner to treat it as logs.
+        recyclerViewLogs = findViewById(R.id.recyclerViewAlarms);
+        clearButton = findViewById(R.id.tvClearHistory);
 
+        // 2. Setup RecyclerView
+        recyclerViewLogs.setLayoutManager(new LinearLayoutManager(this));
+
+        // Get the list from the Singleton Manager
+        logList = HistoryLogsManager.getInstance().getLogs();
+
+        // Connect Adapter
+        adapter = new HistoryAdapter(logList);
+        recyclerViewLogs.setAdapter(adapter);
+
+        // 3. Setup Clear Button
         clearButton.setOnClickListener(v -> {
             HistoryLogsManager.getInstance().clearLogs();
-            logContainer.removeAllViews();
+            adapter.notifyDataSetChanged(); // Refresh the list (now empty)
             Toast.makeText(this, "History cleared", Toast.LENGTH_SHORT).show();
         });
-
-        loadLogs();
 
         NavigationManager.setup(this, R.id.imgHistoryLogs);
     }
@@ -52,41 +70,9 @@ public class HistoryLogActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadLogs(); // Refresh logs whenever the activity comes into view
-    }
-
-    private void loadLogs() {
-        logContainer.removeAllViews(); // safety
-        for (HistoryLogsManager.LogItem log : HistoryLogsManager.getInstance().getLogs()) {
-            addLog(log);
+        // Refresh list when returning to this page (e.g. from Schedule page)
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
         }
-    }
-
-    private void addLog(HistoryLogsManager.LogItem log) {
-        View logView = LayoutInflater.from(this)
-                .inflate(R.layout.item_logs, logContainer, false);
-
-        TextView logTitle = logView.findViewById(R.id.log_title);
-        TextView logTime = logView.findViewById(R.id.log_time);
-        TextView logStatus = logView.findViewById(R.id.log_status);
-
-        logTitle.setText(log.title);
-
-        String timeStr = new SimpleDateFormat("hh:mm a", Locale.getDefault()).format(log.time);
-        logTime.setText(timeStr);
-
-        if ("Success".equals(log.status)) {
-            logStatus.setText("Success");
-            logStatus.setTextColor(0xFF4CAF50);
-            logStatus.setBackgroundColor(0xFFE8F5E9);
-        } else {
-            logStatus.setText("Missed");
-            logStatus.setTextColor(0xFFE53935);
-            logStatus.setBackgroundColor(0xFFFFEBEE);
-        }
-
-        logContainer.addView(logView, 0); // newest on top
-
-
     }
 }

@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pawpal_final.CreateScheduleBottomSheet;
+import com.example.pawpal_final.HistoryLogsManager;
 import com.example.pawpal_final.NavigationManager;
 import com.example.pawpal_final.R;
 import com.example.pawpal_final.ScheduleAdapter;
 import com.example.pawpal_final.data.model.Schedule;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class SchedulePageActivity extends AppCompatActivity {
     private ScheduleAdapter scheduleAdapter;
     private List<Schedule> scheduleList;
     private TextView btnAdd;
+    private MaterialButton btnFeed, btnWater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,10 @@ public class SchedulePageActivity extends AppCompatActivity {
     private void initViews() {
         recyclerViewAlarms = findViewById(R.id.recyclerViewAlarms);
         btnAdd = findViewById(R.id.btnAdd);
+
+        btnFeed = findViewById(R.id.btnFeed);
+        btnWater = findViewById(R.id.btnWater);
+
         scheduleList = new ArrayList<>();
     }
 
@@ -81,6 +88,28 @@ public class SchedulePageActivity extends AppCompatActivity {
             // Open BottomSheet in Create Mode (null schedule, -1 position)
             showCreateScheduleBottomSheet(null, -1);
         });
+
+            btnFeed.setOnClickListener(v -> triggerManualDispense("Food"));
+            btnWater.setOnClickListener(v -> triggerManualDispense("Water"));
+    }
+
+    private void triggerManualDispense(String type) {
+        // A. Simulate ESP32 Response (Replace with real network call later)
+        boolean isEsp32Success = true;
+
+        String title = type + " Dispense";
+        String status;
+
+        if (isEsp32Success) {
+            status = "Success";
+            Toast.makeText(this, "Dispensing " + type + "...", Toast.LENGTH_SHORT).show();
+        } else {
+            status = "Missed";
+            Toast.makeText(this, "Failed to dispense " + type, Toast.LENGTH_SHORT).show();
+        }
+
+        // B. Add to History Manager
+        HistoryLogsManager.getInstance().addLog(title, status, type);
     }
 
     /**

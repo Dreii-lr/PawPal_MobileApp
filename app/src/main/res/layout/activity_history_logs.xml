@@ -8,69 +8,66 @@
     android:layout_height="match_parent"
     android:background="#F5F6FA">
 
-    <!-- Header Spacer (Placeholder) -->
-    <View
-        android:id="@+id/header_spacer"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/transparent"/>
-
-    <!-- History Log Title -->
-    <TextView
-        android:id="@+id/history_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="History Log"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_below="@id/header_spacer"/>
-
-    <!-- Clear Button -->
-    <TextView
-        android:id="@+id/clear_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:textSize="16sp"
-        android:textColor="#F48FB1"
-        android:padding="8dp"
-        android:background="?attr/selectableItemBackground"
-        android:layout_marginEnd="16dp"
-        android:layout_alignTop="@id/history_title"
-        android:layout_alignBottom="@id/history_title"
-        android:layout_alignParentEnd="true"/>
-
-    <!-- Scrollable List of Log Entries -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/log_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="70dp"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Status Footer -->
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Showing last 24 hours of activity"
-                android:textSize="14sp"
-                android:textColor="#52206a"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="40dp"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="History Logs"
+                    android:textColor="#2C3E50"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/nunito_sans_extrabold"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/tvClearHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:strokeColor="#FBE1E1"
+                    android:backgroundTint="#FBE1E1"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Clear History"
+                        android:textColor="#FF5252"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="8dp" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewAlarms"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingHorizontal="2dp" />
+
         </LinearLayout>
     </ScrollView>
-    <!-- Bottom Nav Container -->
+
     <RelativeLayout
         android:id="@+id/bottom_nav_container"
         android:layout_width="match_parent"
